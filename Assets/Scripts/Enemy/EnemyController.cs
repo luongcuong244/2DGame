@@ -71,8 +71,12 @@ public class EnemyController : MonoBehaviour
 
     private void updateHPBar()
     {
-        // set widget of health fill
-        healthFill.transform.localScale = new Vector3((float)health / maxHealth, 1, 1);
+        float scale = (float)health / maxHealth;
+        if (scale < 0)
+        {
+            scale = 0;
+        }
+        healthFill.transform.localScale = new Vector3(scale, 1, 1);
     }
 
     private void Die()
