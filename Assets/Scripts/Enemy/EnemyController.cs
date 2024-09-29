@@ -13,6 +13,8 @@ public class EnemyController : MonoBehaviour
     private Animator myAnimator;
     private SpriteRenderer mySpriteRenderer;
 
+    private Coroutine attackCoroutine;
+
     private void Awake()
     {
         maxHealth = health;
@@ -106,22 +108,28 @@ public class EnemyController : MonoBehaviour
         this.player = player;
     }
 
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     Debug.Log("OnTriggerEnter2D: " + other.tag + " - " + other.name);
-    //     if (other.CompareTag("Player"))
-    //     {
-    //         // other.GetComponent<PlayerController>().TakeDamage(10);
-    //         myAnimator.SetTrigger("Attack");
-    //     }
-    // }
-    private void onCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("OnCollisionEnter2D: " + other.gameObject.tag + " - " + other.gameObject.name);
         if (other.gameObject.CompareTag("Player"))
         {
-            // other.GetComponent<PlayerController>().TakeDamage(10);
+            attackCoroutine = StartCoroutine(startAttack(other.gameObject.GetComponent<PlayerController>()));
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StopCoroutine(attackCoroutine);
+        }
+    }
+
+    // attack every 1 seconds
+    private IEnumerator startAttack(PlayerController player) {
+        while (true) {
+            player.TakeDamage(10);
             myAnimator.SetTrigger("Attack");
+            yield return new WaitForSeconds(1);
         }
     }
 }

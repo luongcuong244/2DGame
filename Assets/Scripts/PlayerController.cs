@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
 
+    public GameObject healthFill;
+    public int health = 100;
+    private int maxHealth = 100;
+
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
@@ -17,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        maxHealth = health;
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
@@ -64,6 +69,52 @@ public class PlayerController : MonoBehaviour
         else
         {
             mySpriteRender.flipX = false;
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            myAnimator.SetTrigger("Hurt");
+            StartCoroutine(FlashCoroutine());
+        }
+        updateHPBar();
+    }
+
+    private void updateHPBar()
+    {
+        float scale = (float)health / maxHealth;
+        if (scale < 0)
+        {
+            scale = 0;
+        }
+        healthFill.transform.localScale = new Vector3(scale, 1, 1);
+    }
+
+    private void Die()
+    {
+        // run animator to play die animation and destroy object after animation
+        myAnimator.SetTrigger("Die");
+        Destroy(gameObject, 0.25f);
+    }
+
+    private IEnumerator FlashCoroutine()
+    {
+        Color originalColor = mySpriteRender.color; // Lưu màu gốc
+        Color flashColor = Color.red; // Màu nháy (có thể thay đổi)
+
+        for (int i = 0; i < 2; i++)
+        {
+            mySpriteRender.color = flashColor; // Đặt màu nháy
+            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây
+            mySpriteRender.color = originalColor; // Đặt lại màu gốc
+            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây
         }
     }
 }
