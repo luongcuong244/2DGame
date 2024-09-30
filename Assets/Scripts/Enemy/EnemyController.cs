@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     private Coroutine attackCoroutine;
+    private GameManager gameManager;
+    private GameObject expItemObject;
 
     private void Awake()
     {
@@ -86,6 +88,9 @@ public class EnemyController : MonoBehaviour
     {
         // run animator to play die animation and destroy object after animation
         myAnimator.SetTrigger("Die");
+        // set active exp item at the same position
+        expItemObject.SetActive(true);
+        expItemObject.transform.position = transform.position;
         Destroy(gameObject, 0.25f);
     }
 
@@ -131,5 +136,15 @@ public class EnemyController : MonoBehaviour
             myAnimator.SetTrigger("Attack");
             yield return new WaitForSeconds(1);
         }
+    }
+
+    public void setGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
+
+    public void setExpItemObject(GameObject expItemObject)
+    {
+        this.expItemObject = expItemObject;
     }
 }

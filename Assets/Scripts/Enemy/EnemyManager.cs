@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public Transform player; // Tham chiếu đến transform của người chơi
     public GameObject enemyPrefab; // Prefab của kẻ thù
     public float spawnInterval = 5f; // Khoảng thời gian giữa các lần spawn
@@ -43,8 +44,14 @@ public class EnemyManager : MonoBehaviour
         // set parent
         enemy.transform.SetParent(transform, false);
 
-        // get enemy controller
-        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        // get exp item by tag
+        GameObject expItem = enemy.transform.Find("ExpItem").gameObject;
+        expItem.GetComponent<ExpItem>().setGameManager(gameManager);
+
+        // get enemy controller on child
+        EnemyController enemyController = enemy.GetComponentInChildren<EnemyController>();
+        enemyController.setGameManager(gameManager);
+        enemyController.setExpItemObject(expItem);
         enemyController.setPlayer(player);
     }
 

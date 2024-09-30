@@ -4,34 +4,19 @@ using UnityEngine;
 
 public class ProgressBar : MonoBehaviour
 {
-    public int max;
-    public int current;
+    public int max = 40;
+    public int current = 0;
     public GameObject fill;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetValue(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetValue(float value)
     {
-        SetValue(current);
-    }
-
-    public void SetValue(int value)
-    {
-        current = value;
-        float fillAmount = (float)current / max;
-        if (fillAmount < 0)
-        {
-            fillAmount = 0;
-        }
-        if (fillAmount > 1)
-        {
-            fillAmount = 1;
-        }
-        fill.transform.localScale = new Vector3(fillAmount, 1, 1);
+        Debug.Log("Value: " + value);
+        fill.transform.localScale = new Vector3(value, 1, 1);
     }
 
     public void SetMax(int value)

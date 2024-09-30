@@ -3,12 +3,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerController playerController;
     public GameObject playerPrefab;
     public GameObject pauseDialog;
     public Text timeText;
+    public Text levelText;
+
+    public ProgressBar expProgressBar;
+
+    public int expForEachLevel = 40;
 
     private float elapsedTime = 0f;  // Biến để lưu thời gian đã trôi qua
     private bool isPaused = false;   // Biến kiểm tra trạng thái tạm dừng
+    private int exp = 0;
+    private int level = 1;
 
     private void Start()
     {
@@ -55,5 +63,17 @@ public class GameManager : MonoBehaviour
     {
         // Reset vị trí của player
         player.transform.position = Vector3.zero;
+    }
+
+    public void AddExp(int exp)
+    {
+        this.exp += exp;
+        if (this.exp >= expForEachLevel)
+        {
+            this.exp -= expForEachLevel;
+            level++;
+        }
+        levelText.text = "LV." + level;
+        expProgressBar.SetValue((float)this.exp / expForEachLevel);
     }
 }
