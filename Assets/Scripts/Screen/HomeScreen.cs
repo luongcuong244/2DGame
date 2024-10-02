@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
 {
-    public ScreenManager screenManager;
+    public GameObject playerPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,8 @@ public class HomeScreen : MonoBehaviour
     }
 
     public void clickStart() {
-        screenManager.Push("GamePlayScreen");
+        ScreenManager.instance.Push("GamePlayScreen");
+        GameManager.instance.setPlayerPrefab(playerPrefab);
+        GameManager.instance.NewGame();
     }
 }

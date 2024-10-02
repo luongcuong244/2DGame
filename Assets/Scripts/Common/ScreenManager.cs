@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ScreenManager : MonoBehaviour
 {
+    public static ScreenManager instance;
     // Stack dùng để lưu trữ các màn hình
     private static Stack<GameObject> screenStack = new Stack<GameObject>();
 
@@ -11,6 +12,14 @@ public class ScreenManager : MonoBehaviour
 
     // Màn hình khởi tạo
     public GameObject initialScreen;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     private void Start()
     {

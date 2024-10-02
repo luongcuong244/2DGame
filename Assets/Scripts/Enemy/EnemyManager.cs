@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameManager gameManager;
     public Transform player; // Tham chiếu đến transform của người chơi
     public GameObject enemyPrefab; // Prefab của kẻ thù
+    public GameObject expItemPrefab; // Prefab của item EXP
     public float spawnInterval = 5f; // Khoảng thời gian giữa các lần spawn
     public float minX = -10f; // Tọa độ x nhỏ nhất
     public float maxX = 10f; // Tọa độ x lớn nhất
@@ -14,13 +14,26 @@ public class EnemyManager : MonoBehaviour
     public float maxY = 5f; // Tọa độ y lớn nhất
     public int maxEnemies = 10; // Số lượng kẻ thù tối đa
 
-    private void Start()
+    // biến lưu coroutine
+    private Coroutine spawnEnemiesCoroutine;
+
+    public void StartSpawnEnemies()
     {
-        StartCoroutine(SpawnEnemies());
+        StopSpawnEnemies();
+        spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
+    }
+
+    public void StopSpawnEnemies()
+    {
+        if (spawnEnemiesCoroutine != null)
+        {
+            StopCoroutine(spawnEnemiesCoroutine);
+        }
     }
 
     private IEnumerator SpawnEnemies()
     {
+        ClearEnemiesAndExpItem();
         while (true)
         {
             if (GetCurrentEnemyCount() < maxEnemies)
@@ -28,6 +41,15 @@ public class EnemyManager : MonoBehaviour
                 SpawnEnemy();
             }
             yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
+    private void ClearEnemiesAndExpItem()
+    {
+        // destroy all child
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 
@@ -44,14 +66,9 @@ public class EnemyManager : MonoBehaviour
         // set parent
         enemy.transform.SetParent(transform, false);
 
-        // get exp item by tag
-        GameObject expItem = enemy.transform.Find("ExpItem").gameObject;
-        expItem.GetComponent<ExpItem>().setGameManager(gameManager);
-
         // get enemy controller on child
-        EnemyController enemyController = enemy.GetComponentInChildren<EnemyController>();
-        enemyController.setGameManager(gameManager);
-        enemyController.setExpItemObject(expItem);
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        enemyController.setExpItemPrefab(expItemPrefab);
         enemyController.setPlayer(player);
     }
 

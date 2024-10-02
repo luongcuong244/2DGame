@@ -14,8 +14,7 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     private Coroutine attackCoroutine;
-    private GameManager gameManager;
-    private GameObject expItemObject;
+    private GameObject expItemPrefab;
 
     private void Awake()
     {
@@ -88,10 +87,18 @@ public class EnemyController : MonoBehaviour
     {
         // run animator to play die animation and destroy object after animation
         myAnimator.SetTrigger("Die");
-        // set active exp item at the same position
-        expItemObject.SetActive(true);
-        expItemObject.transform.position = transform.position;
-        Destroy(gameObject, 0.25f);
+        // spawn exp item at the same position after 0.25s
+        StartCoroutine(spawnExpItem());
+        // increate killed enemies
+        GameManager.instance.IncreaseKilledEnemies();
+    }
+
+    private IEnumerator spawnExpItem()
+    {
+        yield return new WaitForSeconds(0.25f);
+        GameObject expItem = Instantiate(expItemPrefab, transform.position, Quaternion.identity);
+        expItem.transform.SetParent(transform.parent, false);
+        Destroy(gameObject);
     }
 
     private IEnumerator FlashCoroutine()
@@ -138,13 +145,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void setGameManager(GameManager gameManager)
+    public void setExpItemPrefab(GameObject expItemPrefab)
     {
-        this.gameManager = gameManager;
-    }
-
-    public void setExpItemObject(GameObject expItemObject)
-    {
-        this.expItemObject = expItemObject;
+        this.expItemPrefab = expItemPrefab;
     }
 }
