@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - ExpItem
+  - Sickle
   layers:
   - Default
   - TransparentFX

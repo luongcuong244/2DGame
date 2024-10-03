@@ -5,33 +5,29 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private int damage = 10;
+    [SerializeField] private float damageSpeed = 1;
     public FixedJoystick fixedJoystick;
     public GameObject healthFill;
     public int health = 100;
     private int maxHealth = 100;
-
-    // private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Animator myAnimator;
     private SpriteRenderer mySpriteRender;
 
     private bool isMovingLeft = true;
+    private bool isHurting = false;
+    private Coroutine attackCoroutine;
 
 
     private void Awake()
     {
         maxHealth = health;
-        // playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         mySpriteRender = GetComponent<SpriteRenderer>();
     }
-
-    // private void OnEnable()
-    // {
-    //     playerControls.Enable();
-    // }
 
     private void Update()
     {
@@ -61,7 +57,6 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        //rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
         rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
 
@@ -86,8 +81,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            myAnimator.SetTrigger("Hurt");
-            StartCoroutine(FlashCoroutine());
+            if (!isHurting)
+            {
+                StartCoroutine(HurtCoroutine());
+            }
         }
         updateHPBar();
     }
@@ -111,101 +108,42 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DieCoroutine()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
         GameManager.instance.GameOver();
     }
 
-    private IEnumerator FlashCoroutine()
+    private IEnumerator HurtCoroutine()
     {
-        Color originalColor = mySpriteRender.color; // Lưu màu gốc
-        Color flashColor = Color.red; // Màu nháy (có thể thay đổi)
+        isHurting = true;
+        myAnimator.SetTrigger("Hurt");
+        yield return new WaitForSeconds(0.25f);
+        isHurting = false;
+    }
 
-        for (int i = 0; i < 2; i++)
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            mySpriteRender.color = flashColor; // Đặt màu nháy
-            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây
-            mySpriteRender.color = originalColor; // Đặt lại màu gốc
-            yield return new WaitForSeconds(0.1f); // Chờ 0.1 giây
+            attackCoroutine = StartCoroutine(startAttack(other.gameObject.GetComponent<EnemyController>()));
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            StopCoroutine(attackCoroutine);
+        }
+    }
+
+    private IEnumerator startAttack(EnemyController enemyController)
+    {
+        while (true)
+        {
+            enemyController.TakeDamage(damage);
+            myAnimator.SetTrigger("Attack");
+            yield return new WaitForSeconds(1/damageSpeed);
         }
     }
 }
-
-// // for on android
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-
-// public class PlayerController : MonoBehaviour
-// {
-//     [SerializeField] private float moveSpeed = 1f;
-
-//     private PlayerControls playerControls;
-//     private Vector2 movement;
-//     private Rigidbody2D rb;
-//     private Animator myAnimator;
-//     private SpriteRenderer mySpriteRender;
-
-//     private void Awake()
-//     {
-//         playerControls = new PlayerControls();
-//         rb = GetComponent<Rigidbody2D>();
-//         myAnimator = GetComponent<Animator>();
-//         mySpriteRender = GetComponent<SpriteRenderer>();
-//     }
-
-//     private void OnEnable()
-//     {
-//         playerControls.Enable();
-//     }
-
-//     private void Update()
-//     {
-//         // Kiểm tra nhấn và giữ trên màn hình
-//         HandleTouchInput();
-//         // Gọi hàm để cập nhật animator
-//         myAnimator.SetFloat("moveX", movement.x);
-//         myAnimator.SetFloat("moveY", movement.y);
-//     }
-
-//     private void FixedUpdate()
-//     {
-//         Move();
-//         AdjustPlayerFacingDirection();
-//     }
-
-//     private void HandleTouchInput()
-//     {
-//         // Kiểm tra nếu có chạm trên màn hình
-//         if (Input.touchCount > 0)
-//         {
-//             Touch touch = Input.GetTouch(0);
-//             if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
-//             {
-//                 Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-//                 movement = (touchPosition - rb.position).normalized; // Tính hướng từ vị trí nhân vật đến vị trí chạm
-//             }
-//         }
-//         else
-//         {
-//             movement = Vector2.zero; // Nếu không có chạm, dừng di chuyển
-//         }
-//     }
-
-//     private void Move()
-//     {
-//         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
-//     }
-
-//     private void AdjustPlayerFacingDirection()
-//     {
-//         if (movement.x < 0)
-//         {
-//             mySpriteRender.flipX = true;
-//         }
-//         else
-//         {
-//             mySpriteRender.flipX = false;
-//         }
-//     }
-// }

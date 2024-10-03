@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public EnemyManager enemyManager;
     public GameObject pauseDialog;
     public GameObject gameOverDialog;
+    public Text killedEnemiesResultText;
+    public Text timeResultText;
+    public Text levelResultText;
     public Text killedEnemiesText;
     public Text timeText;
     public Text levelText;
@@ -76,7 +79,10 @@ public class GameManager : MonoBehaviour
         expProgressBar.SetValue(0);
         elapsedTime = 0f;
         isPaused = false;
+
         pauseDialog.SetActive(false); // Ẩn dialog tạm dừng
+        gameOverDialog.SetActive(false);
+
         Time.timeScale = 1f; // Tiếp tục thời gian
     }
 
@@ -153,6 +159,9 @@ public class GameManager : MonoBehaviour
     private void showGameOverDialog()
     {
         isPaused = true;
+        killedEnemiesResultText.text = killedEnemies + "";
+        timeResultText.text = timeText.text;
+        levelResultText.text = level + "";
         gameOverDialog.SetActive(true);
         Time.timeScale = 0f;
     }
