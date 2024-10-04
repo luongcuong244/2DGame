@@ -15,4 +15,23 @@ public class WeaponManager : MonoBehaviour
     {
         
     }
+
+    public void AddWeapon(BaseWeapon weapon)
+    {
+        // check if is instance of ProjectileWeapon
+        if (weapon is ProjectileWeapon)
+        {
+            StartCoroutine(SpawnProjectileWeapon((ProjectileWeapon) weapon));
+        }
+    }
+
+    private IEnumerator SpawnProjectileWeapon(ProjectileWeapon weapon)
+    {
+        while(true)
+        {
+            // Instantiate a new projectile weapon
+            ProjectileWeapon newWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(weapon.spawnInterval);
+        }
+    }
 }

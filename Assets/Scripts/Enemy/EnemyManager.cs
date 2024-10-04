@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    public static EnemyManager instance; // Biến static để lưu trữ thể hiện duy nhất của lớp này
     public Transform player; // Tham chiếu đến transform của người chơi
     public GameObject enemyPrefab; // Prefab của kẻ thù
     public GameObject expItemPrefab; // Prefab của item EXP
+    public List<ItemWithProbability> itemsWithProbabilities; // Danh sách item với xác suất xuất hiện
     public float spawnInterval = 5f; // Khoảng thời gian giữa các lần spawn
     public float minX = -10f; // Tọa độ x nhỏ nhất
     public float maxX = 10f; // Tọa độ x lớn nhất
@@ -16,6 +18,19 @@ public class EnemyManager : MonoBehaviour
 
     // biến lưu coroutine
     private Coroutine spawnEnemiesCoroutine;
+
+    private void Awake()
+    {
+        // Lưu trữ thể hiện duy nhất của lớp này
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void StartSpawnEnemies()
     {
@@ -68,7 +83,6 @@ public class EnemyManager : MonoBehaviour
 
         // get enemy controller on child
         EnemyController enemyController = enemy.GetComponent<EnemyController>();
-        enemyController.setExpItemPrefab(expItemPrefab);
         enemyController.setPlayer(player);
     }
 

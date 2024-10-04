@@ -99,6 +99,16 @@ public class PlayerController : MonoBehaviour
         healthFill.transform.localScale = new Vector3(scale, 1, 1);
     }
 
+    public void AddHP(int hp)
+    {
+        health += hp;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        updateHPBar();
+    }
+
     private void Die()
     {
         // run animator to play die animation and destroy object after animation
@@ -145,5 +155,22 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetTrigger("Attack");
             yield return new WaitForSeconds(1/damageSpeed);
         }
+    }
+
+    public void AddNewSickle()
+    {
+        SickleManager sickleManager = GetComponentInChildren<SickleManager>();
+        sickleManager.AddNewSickle();
+    }
+
+    public void IncreaseSicklesSpeed(int addSpeed) {
+        SickleManager sickleManager = GetComponentInChildren<SickleManager>();
+        sickleManager.IncreaseSicklesSpeed(addSpeed);
+    }
+
+    public void AddWeapon(BaseWeapon weapon)
+    {
+        WeaponManager weaponManager = GetComponentInChildren<WeaponManager>();
+        weaponManager.AddWeapon(weapon);
     }
 }

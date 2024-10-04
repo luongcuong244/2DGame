@@ -14,7 +14,7 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     private Coroutine attackCoroutine;
-    private GameObject expItemPrefab;
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -65,6 +65,11 @@ public class EnemyController : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            if (isDead)
+            {
+                return;
+            }
+            isDead = true;
             Die();
         } else {
             myAnimator.SetTrigger("Hurt");
@@ -96,8 +101,29 @@ public class EnemyController : MonoBehaviour
     private IEnumerator spawnExpItem()
     {
         yield return new WaitForSeconds(0.25f);
-        GameObject expItem = Instantiate(expItemPrefab, transform.position, Quaternion.identity);
-        expItem.transform.SetParent(transform.parent, false);
+
+        // Tính tổng xác suất
+        float totalProbability = 0f;
+        foreach (var item in EnemyManager.instance.itemsWithProbabilities)
+        {
+            totalProbability += item.probability;
+        }
+
+        // Sinh số ngẫu nhiên
+        float randomValue = Random.value * totalProbability;
+        float cumulativeProbability = 0f;
+        foreach (var item in EnemyManager.instance.itemsWithProbabilities)
+        {
+            cumulativeProbability += item.probability;
+
+            // Nếu số ngẫu nhiên nhỏ hơn tổng xác suất, sinh item
+            if (randomValue < cumulativeProbability)
+            {
+                GameObject expItem = Instantiate(item.item, transform.position, Quaternion.identity);
+                expItem.transform.SetParent(transform.parent, false);
+                break;
+            }
+        }
         Destroy(gameObject);
     }
 
@@ -143,10 +169,5 @@ public class EnemyController : MonoBehaviour
             myAnimator.SetTrigger("Attack");
             yield return new WaitForSeconds(1);
         }
-    }
-
-    public void setExpItemPrefab(GameObject expItemPrefab)
-    {
-        this.expItemPrefab = expItemPrefab;
     }
 }

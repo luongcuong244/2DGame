@@ -15,7 +15,6 @@ public class ProgressBar : MonoBehaviour
 
     public void SetValue(float value)
     {
-        Debug.Log("Value: " + value);
         fill.transform.localScale = new Vector3(value, 1, 1);
     }
 

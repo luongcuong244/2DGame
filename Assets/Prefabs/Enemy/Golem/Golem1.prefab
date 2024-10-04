@@ -294,7 +294,7 @@ MonoBehaviour:
   player: {fileID: 0}
   moveSpeed: 12
   healthFill: {fileID: 4459953548799477613}
-  health: 100
+  health: 20
 --- !u!1 &7608664075414193356
 GameObject:
   m_ObjectHideFlags: 0

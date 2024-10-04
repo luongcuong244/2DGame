@@ -8,17 +8,15 @@ public class SickleManager : MonoBehaviour
     public float rotationSpeed = 100f; // Tốc độ xoay của kiếm
     public float radius = 3f; // Bán kính xoay quanh nhân vật
     public int damage = 20; // Sát thương của kiếm
+    public int sickleCount = 1; // Số lượng kiếm ban đầu
 
-    private Vector3 offset; // Vị trí ban đầu của kiếm
-
-    // mảng chứa các kiếm
-    private List<GameObject> sickles = new List<GameObject>();
+    private List<GameObject> sickles = new List<GameObject>(); // mảng chứa các kiếm
+    private float currentRotation; // Để theo dõi góc hiện tại
 
     private void Start()
     {
-        // Đặt kiếm ở vị trí ban đầu dựa vào bán kính
-        offset = new Vector3(radius, 0, 0);
-        transform.localPosition = offset; // Đặt kiếm ở vị trí bán kính
+        // Khởi tạo 1 lưỡi liềm ban đầu
+        SetupSickles(sickleCount);
     }
 
     private void AddSickle()
@@ -31,7 +29,6 @@ public class SickleManager : MonoBehaviour
         sickles.Add(sickle); // Thêm kiếm vào mảng
     }
 
-    // khởi tạo vị trí của các kiếm để tạo hiệu ứng xoay quanh nhân vật
     public void SetupSickles(int count)
     {
         // Xóa các kiếm cũ
@@ -42,22 +39,45 @@ public class SickleManager : MonoBehaviour
         sickles.Clear();
 
         // Tính góc giữa các kiếm
-        float angle = 360f / count;
+        float angleIncrement = 360f / count;
+
         for (int i = 0; i < count; i++)
         {
             // Tạo kiếm mới
             AddSickle();
-            // Xoay kiếm
-            offset = Quaternion.Euler(0, 0, angle) * offset;
+
+            // Tính toán vị trí cho kiếm mới
+            float angle = angleIncrement * i;
+            Vector3 offset = new Vector3(radius * Mathf.Cos(angle * Mathf.Deg2Rad), radius * Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+            sickles[i].transform.localPosition = offset; // Đặt vị trí kiếm
         }
+    }
+
+    public void AddNewSickle()
+    {
+        // Thêm một lưỡi liềm mới
+        int newCount = sickles.Count + 1;
+        SetupSickles(newCount);
+    }
+
+    public void IncreaseSicklesSpeed(int addSpeed)
+    {
+        // Tăng tốc độ xoay của lưỡi liềm
+        rotationSpeed += addSpeed;
     }
 
     private void Update()
     {
-        // Xoay kiếm quanh nhân vật
-        float angle = rotationSpeed * Time.deltaTime;
-        offset = Quaternion.Euler(0, 0, angle) * offset; // Tính toán vị trí mới
-        transform.localPosition = offset; // Cập nhật vị trí kiếm
-        transform.Rotate(Vector3.forward, angle); // Xoay kiếm
+        // Xoay quanh nhân vật
+        currentRotation += rotationSpeed * Time.deltaTime;
+
+        // Cập nhật vị trí và xoay của từng lưỡi liềm
+        for (int i = 0; i < sickles.Count; i++)
+        {
+            float angle = (360f / sickles.Count) * i + currentRotation;
+            Vector3 offset = new Vector3(radius * Mathf.Cos(angle * Mathf.Deg2Rad), radius * Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+            sickles[i].transform.localPosition = offset; // Cập nhật vị trí kiếm
+            sickles[i].transform.rotation = Quaternion.Euler(0, 0, angle); // Xoay kiếm
+        }
     }
 }

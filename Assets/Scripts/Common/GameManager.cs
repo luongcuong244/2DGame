@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public CinemachineVirtualCamera virtualCamera;
     public FixedJoystick fixedJoystick;
-    public EnemyManager enemyManager;
     public GameObject pauseDialog;
     public GameObject gameOverDialog;
+    public GameObject levelUpDialog;
+    public Image weaponImage;
     public Text killedEnemiesResultText;
     public Text timeResultText;
     public Text levelResultText;
     public Text killedEnemiesText;
     public Text timeText;
     public Text levelText;
-
     public ProgressBar expProgressBar;
-
-    public int expForEachLevel = 40;
+    public List<BaseWeapon> weapons;
+    private int weaponIndex = 0;
 
     private GameObject playerPrefab;
     private GameObject player;
@@ -108,8 +109,8 @@ public class GameManager : MonoBehaviour
 
     private void setupEnemy()
     {
-        enemyManager.player = player.transform;
-        enemyManager.StartSpawnEnemies();
+        EnemyManager.instance.player = player.transform;
+        EnemyManager.instance.StartSpawnEnemies();
     }
 
     public void PauseGame()
@@ -129,20 +130,29 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        enemyManager.StopSpawnEnemies();
+        EnemyManager.instance.StopSpawnEnemies();
         ScreenManager.instance.Pop();
     }
 
     public void AddExp(int exp)
     {
         this.exp += exp;
-        if (this.exp >= expForEachLevel)
+        int expNeededForThisLevel = GetExpNeededForThisLevel();
+        if (this.exp >= expNeededForThisLevel)
         {
-            this.exp -= expForEachLevel;
+            this.exp -= expNeededForThisLevel;
             level++;
+            ShowLevelUpDialog();
         }
         levelText.text = "LV." + level;
-        expProgressBar.SetValue((float)this.exp / expForEachLevel);
+        expProgressBar.SetValue((float)this.exp / expNeededForThisLevel);
+    }
+
+    public void AddHP(int hp)
+    {
+        Debug.Log("Add HP: " + hp);
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.AddHP(hp);
     }
 
     public void IncreaseKilledEnemies()
@@ -152,7 +162,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver() {
-        enemyManager.StopSpawnEnemies();
+        EnemyManager.instance.StopSpawnEnemies();
         showGameOverDialog();
     }
 
@@ -164,5 +174,51 @@ public class GameManager : MonoBehaviour
         levelResultText.text = level + "";
         gameOverDialog.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    private int GetExpNeededForThisLevel()
+    {
+        return 40 + (level - 1) * 30;
+    }
+
+    private void ShowLevelUpDialog()
+    {
+        isPaused = true;
+        levelUpDialog.SetActive(true);
+        weaponImage.sprite = weapons[weaponIndex].GetImage();
+        Time.timeScale = 0f;
+    }
+
+    private void HideLevelUpDialog()
+    {
+        isPaused = false;
+        levelUpDialog.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void AddNewSickle()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.AddNewSickle();
+        HideLevelUpDialog();
+    }
+
+    public void IncreaseSicklesSpeed()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.IncreaseSicklesSpeed(30);
+        HideLevelUpDialog();
+    }
+
+    public void AddWeapon()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.AddWeapon(weapons[weaponIndex]);
+        weaponIndex++;
+        if (weaponIndex >= weapons.Count)
+        {
+            weaponIndex = 0;
+        }
+        HideLevelUpDialog();
     }
 }
