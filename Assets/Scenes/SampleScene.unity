@@ -2996,8 +2996,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 144.9}
-  m_SizeDelta: {x: 505.0438, y: 562.647}
+  m_AnchoredPosition: {x: -90, y: 128}
+  m_SizeDelta: {x: 1515.5, y: 811.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879360192
 MonoBehaviour:
@@ -3019,7 +3019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d81230c445da642b0a976dd7b51e9270, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4cc0511e9c984632a156cf00eac3d47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3861,10 +3861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 514428334485953634, guid: 585eb2f938b8c4c66a4b6545e41214df, type: 3}
-  - {fileID: 514428334485953634, guid: 08fd5156261c74ae38ead97d89ee098e, type: 3}
-  - {fileID: 514428334485953634, guid: 09924c6170feb4365b2185087cc4da85, type: 3}
   - {fileID: 514428334485953634, guid: e0efb4d25959d45d89a9a21b359fb836, type: 3}
+  - {fileID: 514428334485953634, guid: 845509c2a202d47128850124a546a737, type: 3}
+  - {fileID: 514428334485953634, guid: 6c419a1019c684d828b2d3d4b5b502df, type: 3}
   playerImage: {fileID: 879360192}
   healthPointText: {fileID: 1664661118}
   damageText: {fileID: 1386095444}
