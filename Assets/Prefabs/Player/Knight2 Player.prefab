@@ -204,12 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714016dbdf3ca4f52ac2c7af04669438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  damage: 10
+  moveSpeed: 7
+  damage: 30
   damageSpeed: 1
   fixedJoystick: {fileID: 0}
   healthFill: {fileID: 216677932036977225}
-  health: 100
+  health: 80
 --- !u!95 &4038792497195396626
 Animator:
   serializedVersion: 5
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sicklePrefab: {fileID: 9212508797159219127, guid: 2a25ddacaf41c4c51b88b6de1b49c294, type: 3}
-  rotationSpeed: 400
+  rotationSpeed: 200
   radius: 2.4
-  damage: 20
+  damage: 10
   sickleCount: 1

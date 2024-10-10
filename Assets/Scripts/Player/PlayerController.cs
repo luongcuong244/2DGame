@@ -174,6 +174,12 @@ public class PlayerController : MonoBehaviour
         weaponManager.AddWeapon(weapon);
     }
 
+    public void ClearWeapon()
+    {
+        WeaponManager weaponManager = GetComponentInChildren<WeaponManager>();
+        weaponManager.ClearWeapon();
+    }
+
     public Sprite GetImage()
     {
         return transform.GetComponent<SpriteRenderer>().sprite;

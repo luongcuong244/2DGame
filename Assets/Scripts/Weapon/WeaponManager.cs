@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private List<IEnumerator> weaponCoroutines = new List<IEnumerator>();
 
     public void AddWeapon(BaseWeapon weapon)
     {
         // check if is instance of ProjectileWeapon
         if (weapon is ProjectileWeapon)
         {
-            StartCoroutine(SpawnProjectileWeapon((ProjectileWeapon) weapon));
+            weaponCoroutines.Add(StartCoroutine(SpawnProjectileWeapon((ProjectileWeapon)weapon)));
         }
+    }
+
+    public void ClearWeapon()
+    {
+        foreach (IEnumerator coroutine in weaponCoroutines)
+        {
+            StopCoroutine(coroutine);
+        }
+        weaponCoroutines.Clear();
     }
 
     private IEnumerator SpawnProjectileWeapon(ProjectileWeapon weapon)

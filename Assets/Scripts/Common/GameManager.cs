@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
         gameOverDialog.SetActive(false);
 
         Time.timeScale = 1f; // Tiếp tục thời gian
+
+        ClearWeapon();
     }
 
     private void setupPlayer()
@@ -220,5 +222,12 @@ public class GameManager : MonoBehaviour
             weaponIndex = 0;
         }
         HideLevelUpDialog();
+    }
+
+    private void ClearWeapon()
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.ClearWeapon();
+        weaponIndex = 0;
     }
 }
