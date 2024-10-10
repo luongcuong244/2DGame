@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private int damage = 10;
-    [SerializeField] private float damageSpeed = 1;
+    public float moveSpeed = 1f;
+    public int damage = 10;
+    public float damageSpeed = 1;
     public FixedJoystick fixedJoystick;
     public GameObject healthFill;
     public int health = 100;
@@ -172,5 +172,10 @@ public class PlayerController : MonoBehaviour
     {
         WeaponManager weaponManager = GetComponentInChildren<WeaponManager>();
         weaponManager.AddWeapon(weapon);
+    }
+
+    public Sprite GetImage()
+    {
+        return transform.GetComponent<SpriteRenderer>().sprite;
     }
 }

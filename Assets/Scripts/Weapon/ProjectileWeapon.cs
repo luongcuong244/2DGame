@@ -63,6 +63,8 @@ public class ProjectileWeapon : BaseWeapon
             if (enemy != null)
             {
                 enemy.TakeDamage(damage); // Gọi phương thức TakeDamage trên kẻ thù
+                // Xóa projectile
+                Destroy(gameObject);
             }
         }
     }
