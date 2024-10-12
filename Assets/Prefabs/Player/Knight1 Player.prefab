@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714016dbdf3ca4f52ac2c7af04669438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 3
   damage: 20
   damageSpeed: 1
   fixedJoystick: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    private List<IEnumerator> weaponCoroutines = new List<IEnumerator>();
+    private List<Coroutine> weaponCoroutines = new List<Coroutine>();
 
     public void AddWeapon(BaseWeapon weapon)
     {
@@ -17,7 +17,7 @@ public class WeaponManager : MonoBehaviour
 
     public void ClearWeapon()
     {
-        foreach (IEnumerator coroutine in weaponCoroutines)
+        foreach (Coroutine coroutine in weaponCoroutines)
         {
             StopCoroutine(coroutine);
         }

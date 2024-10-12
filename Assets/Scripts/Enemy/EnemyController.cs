@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 3f; // Tốc độ di chuyển của kẻ thù
     public GameObject healthFill;
     public int health = 100;
+    public float spawnInterval = 5f;
     private int maxHealth = 100;
     private Rigidbody2D rb;
     private Animator myAnimator;

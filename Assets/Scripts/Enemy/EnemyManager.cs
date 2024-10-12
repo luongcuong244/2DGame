@@ -6,10 +6,9 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance; // Biến static để lưu trữ thể hiện duy nhất của lớp này
     public Transform player; // Tham chiếu đến transform của người chơi
-    public GameObject enemyPrefab; // Prefab của kẻ thù
+    public List<GameObject> enemiesPrefab; // Prefab của kẻ thù
     public GameObject expItemPrefab; // Prefab của item EXP
     public List<ItemWithProbability> itemsWithProbabilities; // Danh sách item với xác suất xuất hiện
-    public float spawnInterval = 5f; // Khoảng thời gian giữa các lần spawn
     public float minX = -10f; // Tọa độ x nhỏ nhất
     public float maxX = 10f; // Tọa độ x lớn nhất
     public float minY = -5f; // Tọa độ y nhỏ nhất
@@ -35,6 +34,7 @@ public class EnemyManager : MonoBehaviour
     public void StartSpawnEnemies()
     {
         StopSpawnEnemies();
+        ClearEnemiesAndExpItem();
         spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
     }
 
@@ -48,14 +48,23 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        ClearEnemiesAndExpItem();
+        foreach (GameObject enemyPrefab in enemiesPrefab)
+        {
+            float spawnInterval = enemyPrefab.GetComponent<EnemyController>().spawnInterval;
+            StartCoroutine(StartSpawnEnemies(enemyPrefab, spawnInterval));
+        }
+        yield return null;
+    }
+
+    private IEnumerator StartSpawnEnemies(GameObject enemyPrefab, float interval)
+    {
         while (true)
         {
             if (GetCurrentEnemyCount() < maxEnemies)
             {
-                SpawnEnemy();
+                SpawnEnemy(enemyPrefab);
             }
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -68,7 +77,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(GameObject enemyPrefab)
     {
         // Tạo vị trí ngẫu nhiên trong khoảng cho phép
         Vector2 spawnPosition = new Vector2(

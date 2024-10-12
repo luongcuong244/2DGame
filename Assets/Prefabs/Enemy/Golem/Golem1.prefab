@@ -206,7 +206,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d16d8ab275a1241ceb2504f8f2b38a1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: afbd0bdc86f554815bb0f6a0cb7f9ec5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -295,6 +295,7 @@ MonoBehaviour:
   moveSpeed: 12
   healthFill: {fileID: 4459953548799477613}
   health: 20
+  spawnInterval: 1
 --- !u!1 &7608664075414193356
 GameObject:
   m_ObjectHideFlags: 0
