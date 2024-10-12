@@ -568,5 +568,5 @@ MonoBehaviour:
   sicklePrefab: {fileID: 9212508797159219127, guid: 2a25ddacaf41c4c51b88b6de1b49c294, type: 3}
   rotationSpeed: 200
   radius: 2.4
-  damage: 10
+  damage: 20
   sickleCount: 1

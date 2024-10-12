@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
             Vector2 direction = (player.position - transform.position).normalized;
 
             // Cập nhật vị trí của kẻ thù
-            rb.MovePosition(rb.position + direction * moveSpeed * Time.deltaTime);
+            rb.MovePosition(rb.position + direction * moveSpeed * 0.002f);
         }
     }
 

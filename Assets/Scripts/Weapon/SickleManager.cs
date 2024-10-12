@@ -7,7 +7,7 @@ public class SickleManager : MonoBehaviour
     public GameObject sicklePrefab; // Prefab của kiếm
     public float rotationSpeed = 10f; // Tốc độ xoay của kiếm
     public float radius = 3f; // Bán kính xoay quanh nhân vật
-    public int damage = 10; // Sát thương của kiếm
+    public int damage = 20; // Sát thương của kiếm
     public int sickleCount = 1; // Số lượng kiếm ban đầu
 
     private List<GameObject> sickles = new List<GameObject>(); // mảng chứa các kiếm
