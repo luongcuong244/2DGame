@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class HomeScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void clickStart() 
     {
         ScreenManager.instance.Push("PlayerChooserScreen");
+    }
+
+    public void clickHistory()
+    {
+        ScreenManager.instance.Push("HistoryScreen");
     }
 }

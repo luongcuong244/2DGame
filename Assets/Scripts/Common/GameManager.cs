@@ -178,6 +178,10 @@ public class GameManager : MonoBehaviour
         levelResultText.text = level + "";
         gameOverDialog.SetActive(true);
         Time.timeScale = 0f;
+
+        // save to database
+        History history = new History(killedEnemies, timeText.text, level, System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        DatabaseManager.Instance.AddHistory(history);
     }
 
     private int GetExpNeededForThisLevel()
