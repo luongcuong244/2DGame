@@ -104,11 +104,11 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         // Tính tổng xác suất
-        float totalProbability = 0f;
-        foreach (var item in EnemyManager.instance.itemsWithProbabilities)
-        {
-            totalProbability += item.probability;
-        }
+        float totalProbability = 100f;
+        // foreach (var item in EnemyManager.instance.itemsWithProbabilities)
+        // {
+        //     totalProbability += item.probability;
+        // }
 
         // Sinh số ngẫu nhiên
         float randomValue = Random.value * totalProbability;

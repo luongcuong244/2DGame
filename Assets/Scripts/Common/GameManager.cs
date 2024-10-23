@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     private int GetExpNeededForThisLevel()
     {
-        return 40 + (level - 1) * 30;
+        return 50 + (level - 1) * 40;
     }
 
     private void ShowLevelUpDialog()

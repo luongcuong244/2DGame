@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
+    public BaseWeapon defaultWeapon;
     private List<Coroutine> weaponCoroutines = new List<Coroutine>();
+
+    private void Start()
+    {
+        if (defaultWeapon != null)
+        {
+            AddWeapon(defaultWeapon);
+        }
+    }
 
     public void AddWeapon(BaseWeapon weapon)
     {

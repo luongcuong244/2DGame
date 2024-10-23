@@ -1442,7 +1442,7 @@ MonoBehaviour:
   expItemPrefab: {fileID: 5735115624794903569, guid: 3097da12ecab940b7ad4ad9f58c47999, type: 3}
   itemsWithProbabilities:
   - item: {fileID: 5735115624794903569, guid: 3097da12ecab940b7ad4ad9f58c47999, type: 3}
-    probability: 90
+    probability: 50
   - item: {fileID: 5735115624794903569, guid: ad4a2ecdeafc94cc5b8a6f4b9da5d1e2, type: 3}
     probability: 10
   minX: -15

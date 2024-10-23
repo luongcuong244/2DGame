@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a482ff93f82414eab6a9ab2813e3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultWeapon: {fileID: 3613558406522508671, guid: 940263851e9f14c42b1ed3d48d70aa59, type: 3}
 --- !u!1 &8807900654782594440
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,4 +570,4 @@ MonoBehaviour:
   rotationSpeed: 200
   radius: 2.4
   damage: 20
-  sickleCount: 1
+  sickleCount: 0

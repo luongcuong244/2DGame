@@ -16,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     public int maxEnemies = 10; // Số lượng kẻ thù tối đa
 
     // biến lưu coroutine
-    private Coroutine spawnEnemiesCoroutine;
+    private List<Coroutine> spawnEnemiesCoroutines = new List<Coroutine>();
 
     private void Awake()
     {
@@ -35,15 +35,16 @@ public class EnemyManager : MonoBehaviour
     {
         StopSpawnEnemies();
         ClearEnemiesAndExpItem();
-        spawnEnemiesCoroutine = StartCoroutine(SpawnEnemies());
+        StartCoroutine(SpawnEnemies());
     }
 
     public void StopSpawnEnemies()
     {
-        if (spawnEnemiesCoroutine != null)
+        foreach (Coroutine coroutine in spawnEnemiesCoroutines)
         {
-            StopCoroutine(spawnEnemiesCoroutine);
+            StopCoroutine(coroutine);
         }
+        spawnEnemiesCoroutines.Clear();
     }
 
     private IEnumerator SpawnEnemies()
@@ -51,7 +52,9 @@ public class EnemyManager : MonoBehaviour
         foreach (GameObject enemyPrefab in enemiesPrefab)
         {
             float spawnInterval = enemyPrefab.GetComponent<EnemyController>().spawnInterval;
-            StartCoroutine(StartSpawnEnemies(enemyPrefab, spawnInterval));
+            Coroutine coroutine = StartCoroutine(StartSpawnEnemies(enemyPrefab, spawnInterval));
+            Debug.Log("Start spawn enemy: " + enemyPrefab.name + " with interval: " + spawnInterval);
+            spawnEnemiesCoroutines.Add(coroutine);
         }
         yield return null;
     }
