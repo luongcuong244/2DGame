@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverDialog;
     public GameObject levelUpDialog;
     public Image weaponImage;
+    public Text gameOverText;
     public Text killedEnemiesResultText;
     public Text timeResultText;
     public Text levelResultText;
@@ -54,6 +55,12 @@ public class GameManager : MonoBehaviour
 
             // Cập nhật text hiển thị
             timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            // 10 phút chưa chết thì thắng
+            if (elapsedTime >= 10 * 60)
+            {
+                GameOver(true);
+            }
         }
     }
 
@@ -165,13 +172,21 @@ public class GameManager : MonoBehaviour
         killedEnemiesText.text = killedEnemies + "";
     }
 
-    public void GameOver() {
+    public void GameOver(bool isWin = false) {
         EnemyManager.instance.StopSpawnEnemies();
-        showGameOverDialog();
+        showGameOverDialog(isWin);
     }
 
-    private void showGameOverDialog()
+    private void showGameOverDialog(bool isWin = false)
     {
+        if (isWin)
+        {
+            gameOverText.text = "CHIẾN THẮNG";
+        }
+        else
+        {
+            gameOverText.text = "THẤT BẠI";
+        }
         isPaused = true;
         killedEnemiesResultText.text = killedEnemies + "";
         timeResultText.text = timeText.text;

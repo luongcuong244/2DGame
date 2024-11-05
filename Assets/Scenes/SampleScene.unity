@@ -271,7 +271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add a weapon
+  m_Text: "Th\xEAm v\u0169 kh\xED m\u1EDBi"
 --- !u!222 &3166655
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Killed enemies:'
+  m_Text: "Qu\xE1i \u0111\xE3 ti\xEAu di\u1EC7t:"
 --- !u!222 &76544621
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -819,6 +819,7 @@ MonoBehaviour:
   gameOverDialog: {fileID: 853850192}
   levelUpDialog: {fileID: 69892160}
   weaponImage: {fileID: 1706924338}
+  gameOverText: {fileID: 341047169}
   killedEnemiesResultText: {fileID: 1855336101}
   timeResultText: {fileID: 1113522317}
   levelResultText: {fileID: 274365502}
@@ -1805,13 +1806,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 58
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Increase the speed of the crescents by 30 units
+  m_Text: "T\u0103ng t\u1ED1c \u0111\u1ED9 l\u01B0\u1EE1i li\u1EC1m"
 --- !u!222 &304547850
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1891,7 +1892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Speed:'
+  m_Text: "T\u1ED1c \u0111\u1ED9:"
 --- !u!222 &306454502
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1983,6 +1984,7 @@ RectTransform:
   m_Children:
   - {fileID: 1330452846}
   - {fileID: 595428265}
+  - {fileID: 1519734477}
   m_Father: {fileID: 1592203258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2025,7 +2027,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -104.7}
-  m_SizeDelta: {x: 381.59, y: 90.899994}
+  m_SizeDelta: {x: 500, y: 90.899994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341047169
 MonoBehaviour:
@@ -2054,13 +2056,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 84
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over
+  m_Text: "TH\u1EA4T B\u1EA0I"
 --- !u!222 &341047170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2139,7 +2141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ABOUT
+  m_Text: "H\u01AF\u1EDANG D\u1EAAN"
 --- !u!222 &381012521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2258,7 +2260,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 146.2, y: 30.6}
+  m_SizeDelta: {x: 243.4, y: 30.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &412886021
 MonoBehaviour:
@@ -2287,13 +2289,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: CONTINUE
+  m_Text: "TI\u1EBEP T\u1EE4C"
 --- !u!222 &412886022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2691,7 +2693,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ABOUT
+  m_Text: "H\u01AF\u1EDANG D\u1EAAN"
 --- !u!222 &595428267
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3282,7 +3284,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level Up
+  m_Text: "N\xE2ng c\u1EA5p"
 --- !u!222 &731482172
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3690,7 +3692,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HISTORY
+  m_Text: "L\u1ECACH S\u1EEC"
 --- !u!222 &832026353
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3716,7 +3718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &853850193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4347,7 +4349,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 68.2, y: 30.6}
+  m_SizeDelta: {x: 169.8, y: 30.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967787186
 MonoBehaviour:
@@ -4376,13 +4378,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: "THO\xC1T"
 --- !u!222 &967787187
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4462,7 +4464,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Damage:'
+  m_Text: "S\xE1t th\u01B0\u01A1ng:"
 --- !u!222 &976787978
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4991,7 +4993,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HISTORY
+  m_Text: "L\u1ECACH S\u1EEC"
 --- !u!222 &1059125856
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5282,7 +5284,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Add a crescent
+  m_Text: "Th\xEAm m\u1ED9t l\u01B0\u1EE1i li\u1EC1m"
 --- !u!222 &1133332517
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5361,7 +5363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ( Choose one to continue )
+  m_Text: "( Ch\u1ECDn m\u1ED9t \u0111\u1EC3 ti\u1EBFp t\u1EE5c )"
 --- !u!222 &1268276914
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5787,7 +5789,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Health Points:'
+  m_Text: "M\xE1u:"
 --- !u!222 &1341484763
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6344,7 +6346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: "B\u1EAET \u0110\u1EA6U"
 --- !u!222 &1444562811
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6352,6 +6354,98 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444562808}
+  m_CullTransparentMesh: 1
+--- !u!1 &1519734476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519734477}
+  - component: {fileID: 1519734479}
+  - component: {fileID: 1519734478}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1519734477
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519734476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 308605576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -781.3}
+  m_SizeDelta: {x: -100, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1519734478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519734476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 40
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 112
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "- L\u1EF1a ch\u1ECDn chi\u1EBFn binh m\xE0 b\u1EA1n mu\u1ED1n \u0111i\u1EC1u
+    khi\u1EC3n, m\u1ED7i chi\u1EBFn binh s\u1EBD c\xF3 nh\u1EEFng ch\u1EC9 s\u1ED1
+    kh\xE1c nhau.\n\n- Khi b\u1EAFt \u0111\u1EA7u game, b\u1EA1n ph\u1EA3i di chuy\u1EC3n
+    li\xEAn t\u1EE5c v\xE0 t\u1EADn d\u1EE5ng c\xE1c v\u0169 kh\xED hi\u1EC7n c\xF3
+    \u0111\u1EC3 ti\xEAu di\u1EC7t qu\xE1i.\n\n- Ti\xEAu di\u1EC7t \u0111\u01B0\u1EE3c
+    qu\xE1i s\u1EBD c\xF3 kinh nghi\u1EC7m r\u01A1i ra, nh\u1EB7t ch\xFAng \u0111\u1EC3
+    c\xF3 th\u1EC3 t\u0103ng kinh nghi\u1EC7m. \u0110i\u1EC3m kinh nghi\u1EC7m s\u1EBD
+    gi\xFAp b\u1EA1n th\u0103ng c\u1EA5p \u0111\u1EC3 c\xF3 th\u1EC3 n\xE2ng c\u1EA5p
+    v\xE0 m\u1EDF th\xEAm c\xE1c v\u0169 kh\xED m\u1EDBi, s\u1EB5n s\xE0ng cho nh\u1EEFng
+    l\u01B0\u1EE3t qu\xE1i h\xF9ng m\u1EA1nh ph\xEDa sau.\n\n- N\u1EBFu y\u1EBFu
+    m\xE1u h\xE3y nh\u1EB7t v\u1EADt ph\u1EA9m m\xE1u \u0111\u1EC3 c\xF3 th\u1EC3
+    h\u1ED3i ph\u1EE5c l\u1EA1i l\u01B0\u1EE3ng m\xE1u cho chi\u1EBFn binh c\u1EE7a
+    b\u1EA1n.\n\n- S\u1ED1ng s\xF3t qua 10 ph\xFAt v\xE0 b\u1EA1n s\u1EBD l\xE0 ng\u01B0\u1EDDi
+    chi\u1EBFn th\u1EAFng."
+--- !u!222 &1519734479
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519734476}
   m_CullTransparentMesh: 1
 --- !u!1 &1525119414
 GameObject:
@@ -6658,7 +6752,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 29.3, y: 0}
-  m_SizeDelta: {x: 279.3, y: 39.65}
+  m_SizeDelta: {x: 282.82, y: 39.65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1570230128
 MonoBehaviour:
@@ -6693,7 +6787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Suvived:'
+  m_Text: "Th\u1EDDi gian sinh t\u1ED3n:"
 --- !u!222 &1570230129
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6909,7 +7003,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 110.8, y: 30.6}
+  m_SizeDelta: {x: 170.5, y: 30.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1612399939
 MonoBehaviour:
@@ -6938,13 +7032,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REPLAY
+  m_Text: "CH\u01A0I L\u1EA0I"
 --- !u!222 &1612399940
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8100,7 +8194,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 110.8, y: 30.6}
+  m_SizeDelta: {x: 159, y: 30.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1968198782
 MonoBehaviour:
@@ -8129,13 +8223,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REPLAY
+  m_Text: "CH\u01A0I L\u1EA0I"
 --- !u!222 &1968198783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8274,7 +8368,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 68.2, y: 30.6}
+  m_SizeDelta: {x: 127.9, y: 30.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986696032
 MonoBehaviour:
@@ -8303,13 +8397,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QUIT
+  m_Text: "THO\xC1T"
 --- !u!222 &1986696033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8388,7 +8482,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Level Reached:'
+  m_Text: "C\u1EA5p \u0111\u1EA1t \u0111\u01B0\u1EE3c:"
 --- !u!222 &2075279038
 CanvasRenderer:
   m_ObjectHideFlags: 0

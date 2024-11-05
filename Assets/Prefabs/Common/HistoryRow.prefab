@@ -269,7 +269,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 29.3, y: 0}
-  m_SizeDelta: {x: 279.3, y: 39.65}
+  m_SizeDelta: {x: 396.4, y: 39.65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3773521536387857593
 CanvasRenderer:
@@ -312,7 +312,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Killed enemies:'
+  m_Text: "Qu\xE1i \u0111\xE3 ti\xEAu di\u1EC7t:"
 --- !u!1 &1950901827182506275
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +635,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 29.3, y: 0}
-  m_SizeDelta: {x: 279.3, y: 39.65}
+  m_SizeDelta: {x: 364.5, y: 39.65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7491275251292393315
 CanvasRenderer:
@@ -678,7 +678,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Level Reached:'
+  m_Text: "C\u1EA5p \u0111\u1EA1t \u0111\u01B0\u1EE3c:"
 --- !u!1 &5754830232907576688
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 29.3, y: 0}
-  m_SizeDelta: {x: 279.3, y: 39.65}
+  m_SizeDelta: {x: 342.4, y: 39.65}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1466366756388666053
 CanvasRenderer:
@@ -757,7 +757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Suvived:'
+  m_Text: "Th\u1EDDi gian sinh t\u1ED3n:"
 --- !u!1 &5837385540545087907
 GameObject:
   m_ObjectHideFlags: 0
