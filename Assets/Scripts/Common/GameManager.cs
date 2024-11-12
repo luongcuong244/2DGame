@@ -56,8 +56,8 @@ public class GameManager : MonoBehaviour
             // Cập nhật text hiển thị
             timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            // 10 phút chưa chết thì thắng
-            if (elapsedTime >= 10 * 60)
+            // 5 phút chưa chết thì thắng
+            if (elapsedTime >= 5 * 60)
             {
                 GameOver(true);
             }
